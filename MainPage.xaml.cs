@@ -188,7 +188,85 @@ namespace _02_LeonceEcrit
             
         }
 
+        private async void MyTextBox_KeyUp(object sender, KeyRoutedEventArgs e) 
+        {
+            String key = e.Key.ToString().ToUpper();
 
+            switch (key)
+            {
+                case "A":
+                case "E":
+                case "I":
+                case "J":
+                case "O":
+                case "Q":
+                case "U":
+                case "W":
+                case "X":
+                case "Y":
+                    break;
+                case "B":
+                    key = "BEUH";
+                    break;
+                case "C":
+                    key = "SE";
+                    break;
+                case "D":
+                    key = "DE";
+                    break;
+                case "F":
+                    key = "FEUX";
+                    break;
+                case "G":
+                    key = "GUEUX";
+                    break;
+                case "H":
+                    key = "H";
+                    break;
+                case "K":
+                    key = "QUEUE";
+                    break;
+                case "L":
+                    key = "LE";
+                    break;
+                case "M":
+                    key = "ME";
+                    break;
+                case "N":
+                    key = "NE";
+                    break;
+                case "P":
+                    key = "PEUX";
+                    break;
+                case "R":
+                    key = "RE";
+                    break;
+                case "S":
+                    key = "SE";
+                    break;
+                case "T":
+                    key = "TE";
+                    break;
+                case "V":
+                    key = "VOEUX";
+                    break;
+                case "Z":
+                    key = "PEPPA. PIG.";
+                    break;
+                default:
+                    key = "";
+                    break;
+            }
+
+
+                    log.Trace(String.Format(
+                "The key {0} was pressed while focus was on {1}",
+                key, (e.OriginalSource as FrameworkElement).Name));
+            await this.speachAsync(key);
+        }
+       
+            
+        
 
 
 

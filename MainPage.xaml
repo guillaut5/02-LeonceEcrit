@@ -114,6 +114,7 @@
                                      TextWrapping="Wrap"
                                      Width="900"
                                      Height="Auto"
+                                     KeyUp="MyTextBox_KeyUp"
                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
                                      FontSize="50" />
                 </Border>
