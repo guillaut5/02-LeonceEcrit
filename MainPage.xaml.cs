@@ -168,7 +168,7 @@ namespace _02_LeonceEcrit
                     break;
                 case 0:
                 case 1:
-                    bravoText = " RECOMENCE !!";
+                    bravoText = " RECOMMENCE !!";
                     break;
                 default:
                     bravoText = " DEFAULT !!";
