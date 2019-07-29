@@ -9,7 +9,6 @@
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
 
-       
 
         <Flyout x:Name="MyFlyout"
                 ShowMode="TransientWithDismissOnPointerMoveAway">
