@@ -60,31 +60,46 @@
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="6*" />
-            <RowDefinition Height="4*" />
+            <RowDefinition Height="10*" />
+            <RowDefinition Height="50*" />
+            <RowDefinition Height="40*" />
 
         </Grid.RowDefinitions>
         <Grid Grid.Column="0"
               Grid.Row="0">
+        
+                <ToggleSwitch x:Name="PlayLetterButton"
+                              Header="Clavier vocal"
+                              
+                              AutomationProperties.HelpText="Active/Désactive les lettres vocales"
+                              VerticalAlignment="Center" />
+        </Grid>
+        <Grid Grid.Column="0"
+              Grid.Row="1"
+             >
             <FlipView x:Name="flipView"
+                      
                       ItemsSource="{x:Bind Images}"
                       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
+                      Height="Auto"
                       SelectionChanged="FlipView_SelectionChanged">
                 <FlipView.ItemTemplate>
                     <DataTemplate>
                         <Grid Height="auto">
                             <Grid.RowDefinitions>
-                                <RowDefinition  Height="9*" />
-                                <RowDefinition Height="1*" />
+                                <RowDefinition  Height="85*" />
+                                <RowDefinition Height="15*" />
                             </Grid.RowDefinitions>
                             <Image Height="auto"
                                    Grid.Row="0"
                                    Source="{Binding ImageSource}"
                                    Stretch="Uniform" />
                             <StackPanel Orientation="Vertical"
-                                        Grid.Row="1">
+                                        Grid.Row="1"
+                                        Height="auto">
                                 <TextBlock Text="{Binding ImageText}"
                                            HorizontalAlignment="Center"
+                                           Height="auto"
                                            Style="{StaticResource SubtitleTextBlockStyle}"
                                            FontSize="45" />
 
@@ -97,22 +112,23 @@
             </FlipView>
 
         </Grid>
-        <Grid Grid.Column="1"
-              Grid.Row="1">
+        <Grid Grid.Column="0"
+              Grid.Row="2">
 
-            <StackPanel Grid.Row="1"
-                        Grid.ColumnSpan="1"
-                        Orientation="Horizontal"
+            <StackPanel Orientation="Horizontal"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center">
-                <Border BorderThickness="9">
+                <Border BorderThickness="9"
+                        Width="Auto">
                     <local:MyTextBox x:Name="myInputTextBox"
-                                     HorizontalAlignment="Center"
+                                     HorizontalAlignment="Right"
                                      VerticalAlignment="Center"
                                      MyCharacterCasing="UpperCase"
                                      AcceptsReturn="True"
                                      TextWrapping="Wrap"
-                                     Width="900"
+                                     Width="Auto"
+                                     MaxWidth="1000"
+                                     MinWidth="500"
                                      Height="Auto"
                                      KeyUp="MyTextBox_KeyUp"
                                      ScrollViewer.VerticalScrollBarVisibility="Auto"
@@ -127,13 +143,9 @@
                         Click="ButtonValid_Click"
                         HorizontalAlignment="Center"
                         FontSize="48">
-                  </Button>
-
-
-
+                </Button>
             </StackPanel>
 
         </Grid>
-
-    </Grid>
+        </Grid>
 </Page>

@@ -64,6 +64,7 @@ namespace _02_LeonceEcrit
             }
 
             base.OnNavigatedTo(e);
+            PlayLetterButton.IsOn = true;
         }
 
         private async Task GetItemsAsync()
@@ -262,7 +263,8 @@ namespace _02_LeonceEcrit
                     log.Trace(String.Format(
                 "The key {0} was pressed while focus was on {1}",
                 key, (e.OriginalSource as FrameworkElement).Name));
-            await this.speachAsync(key);
+            if (PlayLetterButton.IsOn)
+                await this.speachAsync(key);
         }
        
             
