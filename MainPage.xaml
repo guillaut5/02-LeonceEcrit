@@ -5,13 +5,13 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:telerikInput="using:Telerik.UI.Xaml.Controls.Input"
+      xmlns:Windows10version1809="http://schemas.microsoft.com/winfx/2006/xaml/presentation?IsApiContractPresent(Windows.Foundation.UniversalApiContract, 7)"
       mc:Ignorable="d"
       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
 
-
         <Flyout x:Name="MyFlyout"
-                ShowMode="TransientWithDismissOnPointerMoveAway">
+                Windows10version1809:ShowMode="TransientWithDismissOnPointerMoveAway">
 
             <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                   Margin="8"
@@ -67,12 +67,12 @@
         </Grid.RowDefinitions>
         <Grid Grid.Column="0"
               Grid.Row="0">
-        
-                <ToggleSwitch x:Name="PlayLetterButton"
-                              Header="Clavier vocal"
-                              
-                              AutomationProperties.HelpText="Active/Désactive les lettres vocales"
-                              VerticalAlignment="Center" />
+            <ToggleSwitch x:Name="PlayLetterButton"
+                          Header="Clavier vocal"
+                          AutomationProperties.HelpText="Active/Désactive les lettres vocales"
+                          Toggled="ToggleSwitch_Toggled"
+
+                VerticalAlignment="Center" />
         </Grid>
         <Grid Grid.Column="0"
               Grid.Row="1"
@@ -82,22 +82,20 @@
                       ItemsSource="{x:Bind Images}"
                       Background="{ThemeResource ApplicationPageBackgroundThemeBrush}"
                       Height="Auto"
-                      SelectionChanged="FlipView_SelectionChanged">
+                      SelectionChanged="FlipView_SelectionChanged"
+                      KeyDown="FlipView_KeyDown" >
                 <FlipView.ItemTemplate>
                     <DataTemplate>
                         <Grid Height="auto">
                             <Grid.RowDefinitions>
-                                <RowDefinition  Height="85*" />
-                                <RowDefinition Height="15*" />
+                                <RowDefinition  Height="20*" />
+                                <RowDefinition Height="80*" />
                             </Grid.RowDefinitions>
-                            <Image Height="auto"
-                                   Grid.Row="0"
-                                   Source="{Binding ImageSource}"
-                                   Stretch="Uniform" />
                             <StackPanel Orientation="Vertical"
-                                        Grid.Row="1"
+                                        Grid.Row="0"
                                         Height="auto">
                                 <TextBlock Text="{Binding ImageText}"
+                                           IsTextScaleFactorEnabled="false"
                                            HorizontalAlignment="Center"
                                            Height="auto"
                                            Style="{StaticResource SubtitleTextBlockStyle}"
@@ -105,6 +103,11 @@
 
 
                             </StackPanel>
+                            <Image Height="auto"
+                                   Grid.Row="1"
+                                   Source="{Binding ImageSource}"
+                                   Stretch="Uniform" />
+                            
                         </Grid>
                     </DataTemplate>
                 </FlipView.ItemTemplate>
@@ -125,6 +128,7 @@
                                      VerticalAlignment="Center"
                                      MyCharacterCasing="UpperCase"
                                      AcceptsReturn="True"
+                                     IsTextScaleFactorEnabled="False"
                                      TextWrapping="Wrap"
                                      Width="Auto"
                                      MaxWidth="1000"
@@ -140,9 +144,10 @@
                         Content="GO!"
                         Height="120"
                         Width="125"
+                        IsTextScaleFactorEnabled="False"
                         Click="ButtonValid_Click"
                         HorizontalAlignment="Center"
-                        FontSize="48">
+                        FontSize="40">
                 </Button>
             </StackPanel>
 

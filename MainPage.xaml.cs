@@ -65,6 +65,8 @@ namespace _02_LeonceEcrit
 
             base.OnNavigatedTo(e);
             PlayLetterButton.IsOn = true;
+
+
         }
 
         private async Task GetItemsAsync()
@@ -170,6 +172,7 @@ namespace _02_LeonceEcrit
                 case 0:
                 case 1:
                     bravoText = " RECOMMENCE !!";
+                    myInputTextBox.Text = "";
                     break;
                 default:
                     bravoText = " DEFAULT !!";
@@ -181,12 +184,13 @@ namespace _02_LeonceEcrit
             MyResultText.Text = bravoText;
             voiceString = string.Concat(bravoText+",", voiceString);
             myInputTextBox.Focus(FocusState.Programmatic);
+            myInputTextBox.IsTextScaleFactorEnabled = false;
 
             await this.speachAsync( voiceString);
              tmpFlyout.ShowAt(myInputTextBox);
             // rend le focus a la text box
-           
-            
+            myInputTextBox.Focus(FocusState.Programmatic);
+
         }
 
         private async void MyTextBox_KeyUp(object sender, KeyRoutedEventArgs e) 
@@ -216,7 +220,7 @@ namespace _02_LeonceEcrit
                     key = "DE";
                     break;
                 case "F":
-                    key = "FEUX";
+                    key = "FEU";
                     break;
                 case "G":
                     key = "GUEUX";
@@ -252,7 +256,7 @@ namespace _02_LeonceEcrit
                     key = "VOEUX";
                     break;
                 case "Z":
-                    key = "PEPPA. PIG.";
+                    key = "PEPPA PIG";
                     break;
                 default:
                     key = "";
@@ -266,13 +270,22 @@ namespace _02_LeonceEcrit
             if (PlayLetterButton.IsOn)
                 await this.speachAsync(key);
         }
-       
-            
-        
+
+        private void ToggleSwitch_Toggled(object sender, RoutedEventArgs e)
+        {
+            myInputTextBox.Focus(FocusState.Programmatic);
+        }
+
 
 
 
         private void FlipView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            myInputTextBox.Text = "";
+            myInputTextBox.Focus(FocusState.Programmatic);
+        }
+
+        private void FlipView_KeyDown(object sender, Windows.UI.Xaml.Input.KeyRoutedEventArgs e)
         {
             myInputTextBox.Text = "";
             myInputTextBox.Focus(FocusState.Programmatic);

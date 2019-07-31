@@ -9,7 +9,7 @@
   <Identity
     Name="59030GuillaumeFernandez.LeonceEcrit"
     Publisher="CN=2E71D4BB-62A3-4D6C-9EA3-3D068BD89F25"
-    Version="1.0.5.0" />
+    Version="1.0.7.0" />
 
   <mp:PhoneIdentity PhoneProductId="7257c15a-42c2-4841-8b44-6efdaa221096" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
